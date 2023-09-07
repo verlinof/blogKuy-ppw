@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use Illuminate\Routing\Controller;
 use App\Http\Requests\StoreCategoriesRequest;
 use App\Http\Requests\UpdateCategoriesRequest;
 
@@ -23,9 +24,13 @@ class CategoriesController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($request)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required|string|max:255',
+        ]);
+    
+        Categories::create($data);
     }
 
     /**

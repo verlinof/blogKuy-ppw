@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\post;
+use App\Models\Post;
+use Illuminate\Routing\Controller;
 use App\Http\Requests\StorepostRequest;
 use App\Http\Requests\UpdatepostRequest;
 
@@ -32,7 +33,11 @@ class PostController extends Controller
      */
     public function store(StorepostRequest $request)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required|string|max:255',
+        ]);
+    
+        Post::create($data);
     }
 
     /**

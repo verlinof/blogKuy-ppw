@@ -13,14 +13,17 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('categories_id');
-            $table->string('author');
+            $table->unsignedBigInteger('author');
+            $table->unsignedBigInteger('category_title');
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('body');
             $table->string('excerpt');
             $table->timestamps();
+
+            //Relasi
+            $table->foreign('author')->references('username')->on('users');
+            $table->foreign('category_title')->references('title')->on('categories');
         });
     }
 

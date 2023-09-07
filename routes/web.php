@@ -22,27 +22,18 @@ use App\Http\Controllers\CategoriesController;
 |
 */
 
-Route::get('/', function(){
-    return view('home', [
-    "title" => "home",
-    "isLogin" => false]);
-});
+Route::get('/', HomeController::class, 'home');
 
-Route::get('/search', function(){
-    return view('search', [
-        'title' => 'search',
-        'isLogin' => false
-    ]);
-});
+Route::get('/search', SearchController::class, 'index');
 
 Route::get('/login', [LoginController::class, 'index']);
 
 Route::get('/register', [LoginController::class, 'register']);
-
-Route::get('/account', [AccountController::class, 'index']);
 
 Route::get('/post', [PostController::class, 'index']);
 
 Route::get('/user', [AccountController::class, 'user']);
 
 Route::get('/category', [CategoriesController::class, 'index']);
+
+Route::get('/account', [AccountController::class, 'index']);
