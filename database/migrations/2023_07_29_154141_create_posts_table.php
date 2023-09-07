@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('author');
-            $table->unsignedBigInteger('category_title');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('category_id');
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('body');
@@ -22,8 +22,8 @@ return new class extends Migration
             $table->timestamps();
 
             //Relasi
-            $table->foreign('author')->references('username')->on('users');
-            $table->foreign('category_title')->references('title')->on('categories');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

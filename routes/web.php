@@ -22,9 +22,9 @@ use App\Http\Controllers\CategoriesController;
 |
 */
 
-Route::get('/', HomeController::class, 'home');
+Route::get('/', [HomeController::class, 'home']);
 
-Route::get('/search', SearchController::class, 'index');
+Route::get('/search', [SearchController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'index']);
 
